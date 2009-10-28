@@ -3,3 +3,7 @@ Revision history for Hash-AutoHash-Args
 1.00    2009-10-27
         First version, released on an unsuspecting world.
 
+1.01	2009-10-28
+	Fixed prereqs in Build.PL
+
+

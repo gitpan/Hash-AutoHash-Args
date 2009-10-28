@@ -1,8 +1,5 @@
 Build.PL
 Changes
-Hash-AutoHash-Args-1.00/Changes
-Hash-AutoHash-Args-1.00/META.yml
-Hash-AutoHash-Args-1.00/t/autoargs.099.v0_docs.t
 lib/Hash/AutoHash/Args.pm
 lib/Hash/AutoHash/Args/V0.pm
 MANIFEST			This list of files
