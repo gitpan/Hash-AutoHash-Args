@@ -1,5 +1,5 @@
 package Hash::AutoHash::Args::V0;
-my $VERSION='1.00';
+my $VERSION='1.02';
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -50,13 +50,19 @@ BEGIN {
   our @ISA=qw(Hash::AutoHash::Args::helper);
 }
 
+package Hash::AutoHash::Args::V0; # so CPAN will connect POD to main class
+
 1;
 
 __END__
 
 =head1 NAME
 
-Hash::AutoHash::Args - Argument list processing (version 0)
+Hash::AutoHash::Args::V0 - Object-oriented processing of argument lists (version 0)
+
+=head1 VERSION
+
+Version 1.02
 
 =head1 SYNOPSIS
 
@@ -143,8 +149,8 @@ before use.
 
 =head1 DIFFERENCES FROM Class::AutoClass::Args
 
-This class differs from its precursor, Class::AutoClass::Args, only in
-a bug fix involving get_args in scalar context.
+This class differs from its precursor, L<Class::AutoClass::Args>, only
+in a bug fix involving get_args in scalar context.
 
 In scalar context, get_args is supposed to return an ARRAY of argument
 values. Instead, in Class::AutoClass::Args, it returned the value of the first
@@ -158,25 +164,69 @@ values.
   my $values=get_args($args,qw(name hobbies));  # now: gets ARRAY of both values
 
 
+=head1 SEE ALSO
+
+L<Hash::AutoHash::Args> is the base class of this one.
+L<Class::AutoClass::Args> is replaced by this
+class. 
+
+L<Hash::AutoHash> provides the object wrapper used by this class.
+L<Hash::AutoHash::MultiValued>, L<Hash::AutoHash::AVPairsSingle>,
+L<Hash::AutoHash::AVPairsMulti>, L<Hash::AutoHash::Record> are other
+subclasses of L<Hash::AutoHash>.
+
+L<perltie> and L<Tie::Hash> present background on tied hashes.
+
+=head1 AUTHOR
+
+Nat Goodman, C<< <natg at shore.net> >>
+
 =head1 KNOWN BUGS AND CAVEATS
 
 CPAN reports that "Make test fails under Perl 5.6.2, FreeBSD 5.2.1."
-for Class::AutoClass::Args.  We are not aware of any bugs in the
-running code.
+for the predecessor to this class, L<Class::AutoClass::Args>.  We are
+not aware of any bugs in this class.
 
 =head2 Bugs, Caveats, and ToDos
 
 See caveats about accessing arguments via method notation.
 
-=head1 AUTHOR - Nat Goodman, Chris Cavnor
+=head1 SUPPORT
 
-Email natg@shore.net
+You can find documentation for this module with the perldoc command.
 
-=head1 COPYRIGHT
+    perldoc Hash::AutoHash::Args::V0
 
-Copyright (c) 2004, 2009 Institute for Systems Biology (ISB). All Rights Reserved.
+You can also look for information at:
 
-This module is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+=over 4
+
+=item * RT: CPAN's request tracker
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Hash-AutoHash-Args-V0>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Hash-AutoHash-Args-V0>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Hash-AutoHash-Args-V0>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Hash-AutoHash-Args-V0/>
+
+=back
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright (c) 2008, 2009 Institute for Systems Biology (ISB). All Rights Reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of either: the GNU General Public License as published
+by the Free Software Foundation; or the Artistic License.
+
+See http://dev.perl.org/licenses/ for more information.
 
 =cut

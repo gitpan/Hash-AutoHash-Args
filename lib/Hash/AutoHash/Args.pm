@@ -1,5 +1,5 @@
 package Hash::AutoHash::Args;
-our $VERSION='1.01';
+our $VERSION='1.02';
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -129,7 +129,7 @@ sub is_positional {@_%2 || $_[0]!~/^-/;}
 # Tied hash which provides the core capabilities of Hash::AutoHash::Args
 #################################################################################
 package Hash::AutoHash::Args::tie;
-my $VERSION='1.0';
+my $VERSION='1.00';
 use strict;
 use Carp;
 use Tie::Hash;
@@ -173,7 +173,11 @@ __END__
 
 =head1 NAME
 
-Hash::AutoHash::Args - Argument list processing
+Hash::AutoHash::Args - Object-oriented processing of keyword-based argument lists
+
+=head1 VERSION
+
+Version 1.02
 
 =head1 SYNOPSIS
 
@@ -776,8 +780,8 @@ L<Class::AutoClass::Args> is replaced by this
 class. L<Hash::AutoHash::Args::V0> is a subclass which is more
 compatible with Class::AutoClass::Args.
 
-L<Hash::AutoHash::MultiValued>, L<Hash::AutoHash::AVP_Single>,
-L<Hash::AutoHash::AVP_Multi>, L<Hash::AutoHash::Record> are other
+L<Hash::AutoHash::MultiValued>, L<Hash::AutoHash::AVPairsSingle>,
+L<Hash::AutoHash::AVPairsMulti>, L<Hash::AutoHash::Record> are other
 subclasses of L<Hash::AutoHash>.
 
 L<perltie> and L<Tie::Hash> present background on tied hashes.

@@ -1,9 +1,9 @@
 ---
 name: Hash-AutoHash-Args
-version: 1.01
+version: 1.02
 author:
   - 'Nat Goodman <natg@shore.net>'
-abstract: Argument list processing
+abstract: Object-oriented processing of keyword-based argument lists
 license: perl
 resources:
   license: http://dev.perl.org/licenses/
@@ -21,17 +21,17 @@ configure_requires:
 provides:
   Hash::AutoHash::Args:
     file: lib/Hash/AutoHash/Args.pm
-    version: 1.01
+    version: 1.02
   Hash::AutoHash::Args::V0:
     file: lib/Hash/AutoHash/Args/V0.pm
-    version: 1.00
+    version: 1.02
   Hash::AutoHash::Args::V0::helper:
     file: lib/Hash/AutoHash/Args/V0.pm
   Hash::AutoHash::Args::helper:
     file: lib/Hash/AutoHash/Args.pm
   Hash::AutoHash::Args::tie:
     file: lib/Hash/AutoHash/Args.pm
-    version: 1.0
+    version: 1.00
 generated_by: Module::Build version 0.34
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html

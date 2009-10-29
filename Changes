@@ -6,4 +6,11 @@ Revision history for Hash-AutoHash-Args
 1.01	2009-10-28
 	Fixed prereqs in Build.PL
 
+1.02	2009-10-29
+	Documentation changes
+	  Changed module names AVP_Single, AVP_Multi to AVPairsSingle, AVPairsMulti
+          in SEE ALSO to better match CPAN naming style
+	In V0, added 'package ...' before POD so CPAN will connect POD to main class
+      
+
 

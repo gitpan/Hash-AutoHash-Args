@@ -2,6 +2,7 @@ Build.PL
 Changes
 lib/Hash/AutoHash/Args.pm
 lib/Hash/AutoHash/Args/V0.pm
+Makefile.PL
 MANIFEST			This list of files
 META.yml
 README
@@ -16,4 +17,3 @@ t/autoargs.030.v0_methods.t
 t/autoargs.031.alias.t
 t/autoargs.098.docs.t
 t/autoargs.099.v0_docs.t
-Makefile.PL
