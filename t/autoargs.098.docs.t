@@ -1,7 +1,7 @@
-use lib map {glob($_)} qw(../lib ~/lib/perl5 ~/lib/perl5/site_perl/5.8.5);
+use lib qw(t);
 use Carp;
 use Hash::AutoHash::Args;
-use Test::More qw/no_plan/;
+use Test::More;
 use Test::Deep;
 
 use Hash::AutoHash::Args;
@@ -299,3 +299,4 @@ is($args->can('import'),'import','can as object method');
 ok(new Hash::AutoHash::Args(name=>'Joe'),'new as class method');
 ok(!$args->new,'new as object method');
 
+done_testing();

@@ -1,5 +1,5 @@
 package Hash::AutoHash::Args;
-our $VERSION='1.02';
+our $VERSION='1.10';
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -129,7 +129,7 @@ sub is_positional {@_%2 || $_[0]!~/^-/;}
 # Tied hash which provides the core capabilities of Hash::AutoHash::Args
 #################################################################################
 package Hash::AutoHash::Args::tie;
-my $VERSION='1.00';
+my $VERSION='1.10';
 use strict;
 use Carp;
 use Tie::Hash;
@@ -177,7 +177,7 @@ Hash::AutoHash::Args - Object-oriented processing of keyword-based argument list
 
 =head1 VERSION
 
-Version 1.02
+Version 1.10
 
 =head1 SYNOPSIS
 

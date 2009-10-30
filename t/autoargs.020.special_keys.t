@@ -1,9 +1,10 @@
-use lib map {glob($_)} qw(../lib ~/lib/perl5 ~/lib/perl5/site_perl/5.8.5);
+use lib qw(t);
 use Carp;
+use Test::More;
+use Test::Deep;
+use autohashUtil;
 use Hash::AutoHash::Args;
 use Hash::AutoHash::Args::V0;
-use Test::More qw/no_plan/;
-use Test::Deep;
 
 sub test_special_keys {
   my($V,@keys)=@_;
@@ -13,7 +14,6 @@ sub test_special_keys {
   my $args=new $args_class;
   is(ref $args,$V? 'Hash::AutoHash::Args': 'Hash::AutoHash::Args::V0',
      "$label class is $args_class - sanity check");
-
 
   my $args=new $args_class;
   my(@ok,@fail);
@@ -36,14 +36,14 @@ sub test_special_keys {
 #   }
 }
 my @keys=
-  (qw(import new can isa DOES VERSION AUTOLOAD DESTROY),
+  (@COMMON_SPECIAL_KEYS,
    map {my $copy=$_; $copy=~s/^autohash/autoargs/; $copy} @Hash::AutoHash::SUBCLASS_EXPORT_OK);
 test_special_keys(0,@keys);
 
 my @keys=
-  (qw(import new can isa DOES VERSION AUTOLOAD DESTROY),
+  (@COMMON_SPECIAL_KEYS,
    qw(get_args getall_args set_args fix_args fix_keyword fix_keywords is_keyword is_positional),
    map {my $copy=$_; $copy=~s/^autohash/autoargs/; $copy} @Hash::AutoHash::SUBCLASS_EXPORT_OK);
 test_special_keys(1,@keys);
 
-
+done_testing();

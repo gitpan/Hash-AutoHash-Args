@@ -1,8 +1,8 @@
-use lib map {glob($_)} qw(../lib ~/lib/perl5 ~/lib/perl5/site_perl/5.8.5);
+use lib qw(t);
 use Carp;
 use Hash::AutoHash::Args;
 use Hash::AutoHash::Args::V0;
-use Test::More qw/no_plan/;
+use Test::More;
 use Test::Deep;
 
 #################################################################################
@@ -76,4 +76,4 @@ cmp_deeply($actual,
 	     ArG3=>'changed value31','--arg3'=>'changed value32',-ARG3=>'changed value33',)],
 	   'V1 set_args');
 
-
+done_testing();

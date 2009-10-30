@@ -1,8 +1,8 @@
-use lib map {glob($_)} qw(../lib ~/lib/perl5 ~/lib/perl5/site_perl/5.8.5);
+use lib qw(t);
 use Carp;
 use Hash::AutoHash::Args qw(autoargs_alias);
 use Hash::AutoHash::Args::V0;
-use Test::More qw/no_plan/;
+use Test::More;
 use Test::Deep;
 
 #################################################################################
@@ -40,3 +40,5 @@ sub test_exported_functions {
 }
 test_exported_functions(0);
 test_exported_functions(1);
+
+done_testing();

@@ -1,8 +1,8 @@
-use lib map {glob($_)} qw(../lib ~/lib/perl5 ~/lib/perl5/site_perl/5.8.5);
+use lib qw(t);
 use Carp;
 use Hash::AutoHash::Args;
 use Hash::AutoHash::Args::V0;
-use Test::More qw/no_plan/;
+use Test::More;
 use Test::Deep;
 
 sub test_basics {
@@ -73,3 +73,5 @@ sub test_basics {
 
 test_basics(0);
 test_basics(1);
+
+done_testing();

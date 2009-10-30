@@ -1,5 +1,5 @@
 package Hash::AutoHash::Args::V0;
-my $VERSION='1.02';
+my $VERSION='1.10';
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -62,7 +62,7 @@ Hash::AutoHash::Args::V0 - Object-oriented processing of argument lists (version
 
 =head1 VERSION
 
-Version 1.02
+Version 1.10
 
 =head1 SYNOPSIS
 

@@ -1,7 +1,7 @@
-use lib map {glob($_)} qw(../lib ~/lib/perl5 ~/lib/perl5/site_perl/5.8.5);
+use lib qw(t);
 use Carp;
 use Hash::AutoHash::Args::V0;
-use Test::More qw/no_plan/;
+use Test::More;
 use Test::Deep;
 
 ########################################
@@ -54,3 +54,5 @@ cmp_deeply(\%args,{name=>'Joe',hobbies=>['hiking','cooking']},'getall_args');
 $args->set_args(name=>'Joe the Plumber',-first_name=>'Joe',-last_name=>'Plumber');
 my($name,$first_name,$last_name)=@$args{qw(name first_name last_name)};
 cmp_deeply([$name,$first_name,$last_name],['Joe the Plumber','Joe','Plumber'],'set_args');
+
+done_testing();
