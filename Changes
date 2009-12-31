@@ -1,5 +1,10 @@
 Revision history for Hash-AutoHash-Args
 
+1.11    2009-12-31
+	Fixed VERSION number problem in V0.pm found by Jerome Quelin
+        Fixed bug in growing single-valued slot into multi-valued slot when
+	  first value was object
+	
 1.10    2009-10-30
 	This should be stable release assuming CPAN testers find no problems
         Fixed Build prereqs

@@ -17,4 +17,5 @@ t/autoargs.030.v0_methods.t
 t/autoargs.031.alias.t
 t/autoargs.098.docs.t
 t/autoargs.099.v0_docs.t
+t/autoargs.100.grow_slot.t
 t/autohashUtil.pm

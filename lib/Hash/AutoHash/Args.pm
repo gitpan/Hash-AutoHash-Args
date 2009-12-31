@@ -1,5 +1,5 @@
 package Hash::AutoHash::Args;
-our $VERSION='1.10';
+our $VERSION='1.11';
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -108,7 +108,9 @@ sub fix_args {
     my($keyword,$value)=(fix_keyword(shift @args),shift @args);
     $args->{$keyword}=$value,next unless exists $args->{$keyword};
     my $old=$args->{$keyword};
-    $args->{$keyword}=[$old,$value],next unless ref $old; # grow scalar slot into ARRAY
+    # NG 09-12-31: breaks if $old is object. 
+    # $args->{$keyword}=[$old,$value],next unless ref $old; # grow scalar slot into ARRAY
+    $args->{$keyword}=[$old,$value],next unless 'ARRAY' eq ref $old; # grow scalar slot into ARRAY
     push(@$old,$value);					  # else add new value to ARRAY slot
   }
   $args;
@@ -129,7 +131,7 @@ sub is_positional {@_%2 || $_[0]!~/^-/;}
 # Tied hash which provides the core capabilities of Hash::AutoHash::Args
 #################################################################################
 package Hash::AutoHash::Args::tie;
-my $VERSION='1.10';
+our $VERSION='1.11';
 use strict;
 use Carp;
 use Tie::Hash;
@@ -177,7 +179,7 @@ Hash::AutoHash::Args - Object-oriented processing of keyword-based argument list
 
 =head1 VERSION
 
-Version 1.10
+Version 1.11
 
 =head1 SYNOPSIS
 
