@@ -1,6 +1,6 @@
 ---
 name: Hash-AutoHash-Args
-version: 1.11
+version: 1.12
 author:
   - 'Nat Goodman <natg@shore.net>'
 abstract: Object-oriented processing of keyword-based argument lists
@@ -21,7 +21,7 @@ configure_requires:
 provides:
   Hash::AutoHash::Args:
     file: lib/Hash/AutoHash/Args.pm
-    version: 1.11
+    version: 1.12
   Hash::AutoHash::Args::V0:
     file: lib/Hash/AutoHash/Args/V0.pm
     version: 1.11
@@ -31,7 +31,7 @@ provides:
     file: lib/Hash/AutoHash/Args.pm
   Hash::AutoHash::Args::tie:
     file: lib/Hash/AutoHash/Args.pm
-    version: 1.11
+    version: 1.12
 generated_by: Module::Build version 0.34
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html

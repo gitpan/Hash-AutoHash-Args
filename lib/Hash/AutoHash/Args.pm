@@ -1,5 +1,5 @@
 package Hash::AutoHash::Args;
-our $VERSION='1.11';
+our $VERSION='1.12';
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -131,7 +131,7 @@ sub is_positional {@_%2 || $_[0]!~/^-/;}
 # Tied hash which provides the core capabilities of Hash::AutoHash::Args
 #################################################################################
 package Hash::AutoHash::Args::tie;
-our $VERSION='1.11';
+our $VERSION='1.12';
 use strict;
 use Carp;
 use Tie::Hash;
@@ -179,7 +179,7 @@ Hash::AutoHash::Args - Object-oriented processing of keyword-based argument list
 
 =head1 VERSION
 
-Version 1.11
+Version 1.12
 
 =head1 SYNOPSIS
 
@@ -301,7 +301,7 @@ By aliasing $args to %args, you avoid the need to dereference the
 variable when using hash notation.  Admittedly, this is a minor
 convenience, but then again, this entire class is about convenience.
 
-=head2 Constructors
+=head2 new
 
  Title   : new
  Usage   : $args=new Hash::AutoHash::Args
@@ -422,6 +422,8 @@ unfortunately, Perl does not support this behavior with HASH notation.
 
 =back
 
+=head2 Wholesale manipulation of arguments
+
 The class also provides several functions for wholesale manipulation of
 arguments. To use these functions, you must import them into the
 caller's namespace using the common Perl idiom of listing the desired
@@ -430,11 +432,15 @@ functions in a 'use' statement.  For example,
  use Hash::AutoHash::Args
     qw(get_args getall_args set_args autoargs_get autoargs_set);
  
+=head3 get_args
+
  Title   : get_args
  Usage   : ($name,$hobbies)=get_args($args,qw(-name hobbies))
  Function: Get values for multiple keywords
  Args    : Hash::AutoHash::Args object and array or ARRAY of keywords
  Returns : array or ARRAY of argument values
+
+=head3 autoargs_get
 
  Title   : autoargs_get
  Usage   : ($name,$hobbies)=autoargs_get($args,qw(name -hobbies))
@@ -443,11 +449,15 @@ functions in a 'use' statement.  For example,
  Args    : Hash::AutoHash::Args object and array or ARRAY of keywords
  Returns : array or ARRAY of argument values
 
+=head3 getall_args
+
  Title   : getall_args
  Usage   : %args=getall_args($args);
  Function: Get all keyword, value pairs
  Args    : Hash::AutoHash::Args object
  Returns : hash or HASH of key=>value pairs.
+
+=head3 set_args
 
  Title   : set_args
  Usage   : set_args($args,
@@ -461,6 +471,8 @@ functions in a 'use' statement.  For example,
            Form 2. Hash::AutoHash::Args object and separate ARRAYs of keywords 
            and values
  Returns : nothing
+
+=head3 autoargs_set
 
  Title   : autoargs_set
  Usage   : autoargs_set($args,
@@ -477,7 +489,7 @@ functions in a 'use' statement.  For example,
            and values
  Returns : Hash::AutoHash::Args object
 
-=head2 Aliasing object to hash
+=head2 Aliasing object to hash: autoargs_alias
 
 You can alias a Hash::AutoHash::Args object to a regular hash to
 avoid the need to dereference the variable when using hash
@@ -501,6 +513,8 @@ using the common Perl idiom of listing the desired functions in a
 'use' statement.
 
  use Hash::AutoHash::Args qw(fix_args fix_keyword fix_keywords);
+
+=head3 fix_args
  
  Title   : fix_args
  Usage   : $hash=fix_args(-name=>'Joe',HOBBIES=>'hiking',hobbies=>'cooking')
@@ -510,6 +524,8 @@ using the common Perl idiom of listing the desired functions in a
            'autoargs_set'.  
  Returns : HASH of normalized keyword=>value pairs
 
+=head3 fix_keyword
+ 
  Title   : fix_keyword
  Usage   : $keyword=fix_keyword('-NaMe')
            -- OR --
@@ -518,6 +534,8 @@ using the common Perl idiom of listing the desired functions in a
  Args    : array of one or more strings
  Returns : array of normalized strings
 
+=head3 fix_keywords
+ 
  Title   : fix_keywords
  Usage   : $keyword=fix_keywords('-NaMe')
            -- OR --
@@ -536,6 +554,8 @@ To use these functions, they must be imported into the caller's namespace.
 
  use Hash::AutoHash::Args qw(is_keyword is_positional);
 
+=head3 is_keyword
+
  Title   : is_keyword
  Usage   : if (is_keyword(@args)) {
              $args=new Hash::AutoHash::Args (@args);
@@ -547,6 +567,8 @@ To use these functions, they must be imported into the caller's namespace.
            Obviously, this is not fully general.
  Returns : boolean
  Args    : argument list as given
+
+=head3 is_positional
 
  Title   : is_positional
  Usage  : if (is_positional(@args)) {
@@ -597,11 +619,15 @@ To use these functions, you must imported then into the caller's namespace, eg, 
                                autoargs_keys autoargs_values 
                                autoargs_count autoargs_empty autoargs_notempty);
 
+=head3 autoargs_clear
+
  Title   : autoargs_clear
  Usage   : autoargs_clear($args)
  Function: Delete entire contents of $args
  Args    : Hash::AutoHash::Args object
  Returns : nothing
+
+=head3 autoargs_delete
 
  Title   : autoargs_delete
  Usage   : autoargs_delete($args,@keywords)
@@ -610,12 +636,16 @@ To use these functions, you must imported then into the caller's namespace, eg, 
  Args    : Hash::AutoHash::Args object, list of keywords
  Returns : nothing
 
+=head3 autoargs_exists
+
  Title   : autoargs_exists
  Usage   : if (autoargs_exists($args,$keyword)) { ... }
  Function: Test whether keyword is present in $args.  The keyword is
            automatically normalized
  Args    : Hash::AutoHash::Args object, keyword
  Returns : boolean
+
+=head3 autoargs_each
 
  Title   : autoargs_each
  Usage   : while (my($keyword,$value)=autoargs_each($args)) { ... }
@@ -626,11 +656,15 @@ To use these functions, you must imported then into the caller's namespace, eg, 
  Returns : list context: next keyword=>value pair in $args or empty list at end
            scalar context: next keyword in $args or undef at end
 
+=head3 autoargs_keys
+
  Title   : autoargs_keys
  Usage   : @keys=autoargs_keys($args)
  Function: Get all keywords that are present in $args
  Args    : Hash::AutoHash::Args object
  Returns : list of keywords
+
+=head3 autoargs_values
 
  Title   : autoargs_values
  Usage   : @values=autoargs_values($args)
@@ -638,17 +672,23 @@ To use these functions, you must imported then into the caller's namespace, eg, 
  Args    : Hash::AutoHash::Args object
  Returns : list of values
 
+=head3 autoargs_count
+
  Title   : autoargs_count
  Usage   : $count=autoargs_count($args)
  Function: Get the number keywords that are present in $args
  Args    : Hash::AutoHash::Args object
  Returns : number
 
+=head3 autoargs_empty
+
  Title   : autoargs_empty
  Usage   : if (autoargs_empty($args) { ... }
  Function: Test whether $args is empty
  Args    : Hash::AutoHash::Args object
  Returns : boolean
+
+=head3 autoargs_notempty
 
  Title   : autoargs_notempty
  Usage   : if (autoargs_notempty($args) { ... }
