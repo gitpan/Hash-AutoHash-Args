@@ -13,11 +13,11 @@ my $class = Module::Build->subclass
   );
 
 my $builder = $class->new
-  (
-   module_name         => 'Hash::AutoHash::Args',
+  (module_name         => 'Hash::AutoHash::Args',
    license             => 'perl',
    dist_author         => q{Nat Goodman <natg@shore.net>},
-   dist_version_from   => 'lib/Hash/AutoHash/Args.pm',
+   configure_requires=>{'Module::Build' => 0.4,
+		       },
    build_requires => {'Test::More' => 0.88,
 		      'Test::Deep' => 0,
 		      'Exporter' => 0,
@@ -28,7 +28,7 @@ my $builder = $class->new
 		      'Hash::AutoHash' => 1.10,
 		     },
    add_to_cleanup      => [ 'Hash-AutoHash-Args-*' ],
-   create_makefile_pl => 'passthrough',
+   create_makefile_pl => 'small',
   );
 
 $builder->create_build_script();

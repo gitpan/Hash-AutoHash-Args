@@ -1,5 +1,7 @@
 package Hash::AutoHash::Args;
-our $VERSION='1.12';
+our $VERSION='1.13';
+$VERSION=eval $VERSION;		# I think this is the accepted idiom..
+
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -131,7 +133,7 @@ sub is_positional {@_%2 || $_[0]!~/^-/;}
 # Tied hash which provides the core capabilities of Hash::AutoHash::Args
 #################################################################################
 package Hash::AutoHash::Args::tie;
-our $VERSION='1.12';
+our $VERSION=$Hash::AutoHash::Args::VERSION;
 use strict;
 use Carp;
 use Tie::Hash;
@@ -179,7 +181,7 @@ Hash::AutoHash::Args - Object-oriented processing of keyword-based argument list
 
 =head1 VERSION
 
-Version 1.12
+Version 1.13
 
 =head1 SYNOPSIS
 
@@ -720,35 +722,24 @@ were inherited from UNIVERSAL (the base class of everything, e.g,
 
 Hash::AutoHash::Args has a cleaner namespace: B<no keywords are masked>.
 
+CAUTION: As of version 1.13, it is not possible to use method
+notation for keys with the same names as methods inherited from
+UNIVERSAL (the base class of everything). These are 'can', 'isa',
+'DOES', and 'VERSION'.  The reason is that as of Perl 5.9.3, calling
+UNIVERSAL methods as functions is deprecated and developers are
+encouraged to use method form instead. Previous versions of AutoHash
+are incompatible with CPAN modules that adopt this style.
+
 =item * Object vs. class methods
 
-Some of the methods that remain in the Hash::AutoHash::Args
-namespace are logically object-methods (ie, logically apply to
-individual Hash::AutoHash::Args objects, eg, 'AUTOLOAD'), while
-others are logically class-methods (ie, apply to the entire class, eg,
-'can', 'import').
+Some of the methods that remain in the Hash::AutoHash::Args namespace
+are logically object-methods (ie, logically apply to individual
+Hash::AutoHash::Args objects, eg, 'AUTOLOAD'), while others are
+logically class-methods (ie, apply to the entire class, eg, 'import').
 
 For methods that are logically class methods, the code checks whether
 the method was invoked on a class or an object and "does the right
 thing".  
-
-For example, the following two statements
-
-  can Hash::AutoHash::Args('import')
-  Hash::AutoHash::Args->can('import')
-
-invoke the 'can' method on the class Hash::AutoHash::Args; the code
-notices that the target is a class and forwards the call to the 'can'
-method in UNIVERSAL which tells whether the module has an 'import'
-method (it does).  On the other hand,
-
-  $args->can('import')
-
-invokes the 'can' method on the $args object (assuming, of course,
-that's what $args contains); the code notices that the target is a
-Hash::AutoHash::Args object and sets the value of the keyword 'can'
-to 'import'.  This may sound confusing, but it seems to work naturally
-in practice.
 
 The 'new' method warrants special mention.  In normal use, 'new' is
 almost always invoked as a class method, eg, 

@@ -294,7 +294,7 @@ my $can=can Hash::AutoHash::Args('import');
 is(ref $can,'CODE','can as class method');
 my $can=Hash::AutoHash::Args->can('import');
 is(ref $can,'CODE','can as class method');
-is($args->can('import'),'import','can as object method');
+# is($args->can('import'),'import','can as object method');
 
 ok(new Hash::AutoHash::Args(name=>'Joe'),'new as class method');
 ok(!$args->new,'new as object method');

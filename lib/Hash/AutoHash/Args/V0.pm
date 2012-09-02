@@ -1,5 +1,4 @@
 package Hash::AutoHash::Args::V0;
-our $VERSION='1.11';
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -17,6 +16,7 @@ use strict;
 use Carp;
 use Hash::AutoHash;
 use base qw(Hash::AutoHash::Args);
+our $VERSION=$Hash::AutoHash::Args::VERSION;
 
 our @NORMAL_EXPORT_OK=@Hash::AutoHash::Args::EXPORT_OK;
 my $helper_class=__PACKAGE__.'::helper';
@@ -62,7 +62,7 @@ Hash::AutoHash::Args::V0 - Object-oriented processing of argument lists (version
 
 =head1 VERSION
 
-Version 1.11
+Version 1.13
 
 =head1 SYNOPSIS
 
