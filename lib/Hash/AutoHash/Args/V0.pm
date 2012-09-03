@@ -16,7 +16,7 @@ use strict;
 use Carp;
 use Hash::AutoHash;
 use base qw(Hash::AutoHash::Args);
-our $VERSION=$Hash::AutoHash::Args::VERSION;
+our $VERSION='1.14';
 
 our @NORMAL_EXPORT_OK=@Hash::AutoHash::Args::EXPORT_OK;
 my $helper_class=__PACKAGE__.'::helper';
@@ -45,6 +45,7 @@ sub is_positional { &{$helper_class.'::is_positional'} }
 # needed here to get EXPORT_OK, SUBCLASS_EXPORT_OK, import methods from base helper
 #################################################################################
 package Hash::AutoHash::Args::V0::helper;
+our $VERSION='1.14';
 use strict;
 BEGIN {
   our @ISA=qw(Hash::AutoHash::Args::helper);
@@ -62,7 +63,7 @@ Hash::AutoHash::Args::V0 - Object-oriented processing of argument lists (version
 
 =head1 VERSION
 
-Version 1.13
+Version 1.14
 
 =head1 SYNOPSIS
 

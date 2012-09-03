@@ -38,15 +38,15 @@
    "provides" : {
       "Hash::AutoHash::Args" : {
          "file" : "lib/Hash/AutoHash/Args.pm",
-         "version" : "1.13"
+         "version" : "1.14"
       },
       "Hash::AutoHash::Args::V0" : {
          "file" : "lib/Hash/AutoHash/Args/V0.pm",
-         "version" : 0
+         "version" : "1.14"
       },
       "Hash::AutoHash::Args::V0::helper" : {
          "file" : "lib/Hash/AutoHash/Args/V0.pm",
-         "version" : 0
+         "version" : "1.14"
       },
       "Hash::AutoHash::Args::helper" : {
          "file" : "lib/Hash/AutoHash/Args.pm",
@@ -63,5 +63,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "1.13"
+   "version" : "1.14"
 }
