@@ -45,6 +45,7 @@ our @SUBCLASS_EXPORT_OK=$helper_class->SUBCLASS_EXPORT_OK;
 # functions herein (except _new) are exportable by Hash::AutoHash::Args
 #################################################################################
 package Hash::AutoHash::Args::helper;
+our $VERSION='1.14';
 use strict;
 use Carp;
 use Scalar::Util qw(reftype);
@@ -133,7 +134,7 @@ sub is_positional {@_%2 || $_[0]!~/^-/;}
 # Tied hash which provides the core capabilities of Hash::AutoHash::Args
 #################################################################################
 package Hash::AutoHash::Args::tie;
-our $VERSION=$Hash::AutoHash::Args::VERSION;
+our $VERSION='1.14';
 use strict;
 use Carp;
 use Tie::Hash;

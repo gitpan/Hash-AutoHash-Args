@@ -27,10 +27,10 @@ provides:
     version: 1.14
   Hash::AutoHash::Args::helper:
     file: lib/Hash/AutoHash/Args.pm
-    version: 0
+    version: 1.14
   Hash::AutoHash::Args::tie:
     file: lib/Hash/AutoHash/Args.pm
-    version: 0
+    version: 1.14
 requires:
   Carp: 0
   Hash::AutoHash: 1.1
