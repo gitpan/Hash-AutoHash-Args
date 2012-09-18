@@ -1,5 +1,10 @@
 Revision history for Hash-AutoHash-Args
 
+1.15	2012-09-18
+	Fixed Hash::AutoHash prerequisite in Build.PL. Needs 1.15
+	Reverted version numbers in helper, tie, and V0 package. PAUSE upload
+	  wasn't failing - it was just a warning
+
 1.14	2012-09-02
 	Fixed problem with version numbers in helper, tie, and V0 packages 
 	  causing PAUSE upload to fail

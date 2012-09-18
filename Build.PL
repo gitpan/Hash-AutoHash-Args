@@ -25,7 +25,7 @@ my $builder = $class->new
    requires =>       {'Carp' => 0,
 		      'Scalar::Util' => 1.01,
 		      'Tie::Hash' => 1.00,
-		      'Hash::AutoHash' => 1.10,
+		      'Hash::AutoHash' => 1.15,
 		     },
    add_to_cleanup      => [ 'Hash-AutoHash-Args-*' ],
    create_makefile_pl => 'small',

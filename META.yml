@@ -18,24 +18,24 @@ name: Hash-AutoHash-Args
 provides:
   Hash::AutoHash::Args:
     file: lib/Hash/AutoHash/Args.pm
-    version: 1.14
+    version: 1.15
   Hash::AutoHash::Args::V0:
     file: lib/Hash/AutoHash/Args/V0.pm
-    version: 1.14
+    version: 1.15
   Hash::AutoHash::Args::V0::helper:
     file: lib/Hash/AutoHash/Args/V0.pm
-    version: 1.14
+    version: 0
   Hash::AutoHash::Args::helper:
     file: lib/Hash/AutoHash/Args.pm
-    version: 1.14
+    version: 0
   Hash::AutoHash::Args::tie:
     file: lib/Hash/AutoHash/Args.pm
-    version: 1.14
+    version: 0
 requires:
   Carp: 0
-  Hash::AutoHash: 1.1
+  Hash::AutoHash: 1.15
   Scalar::Util: 1.01
   Tie::Hash: 1
 resources:
   license: http://dev.perl.org/licenses/
-version: 1.14
+version: 1.15
