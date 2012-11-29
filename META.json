@@ -18,7 +18,8 @@
          "requires" : {
             "Exporter" : 0,
             "Test::Deep" : 0,
-            "Test::More" : "0.88"
+            "Test::More" : "0.88",
+            "perl" : "v5.17.6"
          }
       },
       "configure" : {
@@ -38,11 +39,11 @@
    "provides" : {
       "Hash::AutoHash::Args" : {
          "file" : "lib/Hash/AutoHash/Args.pm",
-         "version" : "1.15"
+         "version" : "1.16_01"
       },
       "Hash::AutoHash::Args::V0" : {
          "file" : "lib/Hash/AutoHash/Args/V0.pm",
-         "version" : "1.15"
+         "version" : "1.16_01"
       },
       "Hash::AutoHash::Args::V0::helper" : {
          "file" : "lib/Hash/AutoHash/Args/V0.pm",
@@ -57,11 +58,11 @@
          "version" : 0
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "license" : [
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "1.15"
+   "version" : "1.16_01"
 }

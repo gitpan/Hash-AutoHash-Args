@@ -1,5 +1,5 @@
 package Hash::AutoHash::Args;
-our $VERSION='1.15';
+our $VERSION='1.16_01';
 $VERSION=eval $VERSION;		# I think this is the accepted idiom..
 
 #################################################################################
@@ -182,7 +182,7 @@ Hash::AutoHash::Args - Object-oriented processing of keyword-based argument list
 
 =head1 VERSION
 
-Version 1.15
+Version 1.16_01
 
 =head1 SYNOPSIS
 
@@ -324,6 +324,9 @@ convenience, but then again, this entire class is about convenience.
            another Hash::AutoHash::Args object (as in form 2 above), any object  
            that can be coerced into a HASH (form not illustrated), an ARRAY (form
            3 above), or HASH (form 4)
+ Caution : In form 4, the order in which the two 'hobbies' arguments are 
+           processed is arbitrary. This means that the value of $args->hobbies
+           could have 'hiking' and 'cooking' in either order.
 
 =head2 Getting and setting argument values
 

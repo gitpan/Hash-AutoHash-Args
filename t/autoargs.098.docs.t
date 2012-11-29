@@ -122,13 +122,36 @@ cmp_deeply(\%actual,\%correct,'constructor form '.++$i);
 $args=new Hash::AutoHash::Args
   ({name=>'Joe',HOBBIES=>'hiking',hobbies=>'cooking'});
 my %actual=%$args;
-cmp_deeply(\%actual,\%correct,'constructor form '.++$i);
-
+# NG 12-11-29: as of Perl 5.16 or so, the order of hash keys is randomized, and so
+#              we cannot assume that 'hiking' comes before 'cooking'
+# cmp_deeply(\%actual,\%correct,'constructor form '.++$i);
+my $label='constructor form '.++$i;
+my $ok=1;
+unless (eq_deeply([keys %actual],set(keys %correct))) {
+  $ok=0;
+  fail("$label wrong keys");
+  diag('expected: ',join(', ',keys %correct),"\n",
+       '     got: '.join(', ',keys %actual));
+}
+if (exists $actual{name} && $actual{name} ne $correct{name}) {
+  $ok=0;
+  fail("$label wrong name value");
+  diag("expected: $correct{name}\n",
+       "     got: $actual{name}");
+}
+if (exists $actual{hobbies} && !eq_deeply($actual{hobbies},set(@{$correct{hobbies}}))) {
+  $ok=0;
+  fail("$label wrong hobbies value");
+  diag('expected: ',join(', ',@{$correct{hobbies}}),"\n",
+       '     got: ',join(', ',@{$actual{hobbies}}));
+}
+pass($label) if $ok;
+ 
 # Getting and setting argument values
 
 my @correct=('Joe',['hiking','cooking']);
 my $args=new Hash::AutoHash::Args(name=>'Joe',
-				    HOBBIES=>'hiking',hobbies=>'cooking');
+				  HOBBIES=>'hiking',hobbies=>'cooking');
 my $name=$args->{name};
 is($name,'Joe','access argument as HASH element');
 my($name,$hobbies)=@$args{qw(name hobbies)};
@@ -140,7 +163,7 @@ my($name,$hobbies)=@$args{qw(name hobbies)};
 cmp_deeply([$name,$hobbies],['Joseph',['running','rowing']],'change argument values as HASH elements');
 
 my $args=new Hash::AutoHash::Args(name=>'Joe',
-				    HOBBIES=>'hiking',hobbies=>'cooking');
+				  HOBBIES=>'hiking',hobbies=>'cooking');
 my $name=$args->name;
 is($name,'Joe','access argument via method');
 $args->name('Joseph');                # sets name to 'Joseph'
@@ -200,7 +223,6 @@ my $args=new Hash::AutoHash::Args(name=>'Joe',HOBBIES=>['hiking','cooking']);
 autoargs_set($args,['name','-first_name','-last_name'],['Joe the Plumber','Joe','Plumber']);
 my($name,$first_name,$last_name)=@$args{qw(name first_name last_name)};
 cmp_deeply([$name,$first_name,$last_name],['Joe the Plumber','Joe','Plumber'],'autoargs_set: separate ARRAYs form');
-
 
 # Functions to normalize keywords
 use Hash::AutoHash::Args qw(fix_args fix_keyword fix_keywords);
@@ -272,12 +294,14 @@ cmp_deeply(\@actual,\@correct,'autoargs_each scalar context');
 # autoargs_keys
 my @keys=autoargs_keys($args);
 my @correct=keys %correct;
-cmp_deeply(\@keys,\@correct,'autoargs_keys');
+# cmp_deeply(\@keys,\@correct,'autoargs_keys');
+cmp_set(\@keys,\@correct,'autoargs_keys');
 
 # autoargs_values
 my @values=autoargs_values($args);
 my @correct=values %correct;
-cmp_deeply(\@values,\@correct,'autoargs_velues');
+# cmp_deeply(\@values,\@correct,'autoargs_velues');
+cmp_set(\@values,\@correct,'autoargs_velues');
 
 # autoargs_count
 my $count=autoargs_count($args);

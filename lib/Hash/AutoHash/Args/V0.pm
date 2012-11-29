@@ -16,7 +16,7 @@ use strict;
 use Carp;
 use Hash::AutoHash;
 use base qw(Hash::AutoHash::Args);
-our $VERSION='1.15';
+our $VERSION='1.16_01';
 
 our @NORMAL_EXPORT_OK=@Hash::AutoHash::Args::EXPORT_OK;
 my $helper_class=__PACKAGE__.'::helper';
@@ -63,7 +63,7 @@ Hash::AutoHash::Args::V0 - Object-oriented processing of argument lists (version
 
 =head1 VERSION
 
-Version 1.15
+Version 1.16_01
 
 =head1 SYNOPSIS
 
