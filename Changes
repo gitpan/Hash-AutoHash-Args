@@ -1,6 +1,10 @@
 Revision history for Hash-AutoHash-Args
 
-1.16	2012-11-DD
+1.17	2013-12-23
+	Fixed a test I missed last time that was failing because of hash key  
+	randomization introduced in 5.16
+
+1.16	2012-12-11
 	Fixed tests that were failing because of hash key randomization 
 	introduced in 5.16
 

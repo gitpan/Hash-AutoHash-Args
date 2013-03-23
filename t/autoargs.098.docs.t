@@ -289,7 +289,8 @@ cmp_deeply(\%actual,\%correct,'autoargs_each array context');
 while (my $keyword=autoargs_each($args)) { 
   push(@actual,$keyword);
 }
-cmp_deeply(\@actual,\@correct,'autoargs_each scalar context');
+# cmp_deeply(\@actual,\@correct,'autoargs_each scalar context');
+cmp_set(\@actual,\@correct,'autoargs_each scalar context');
 
 # autoargs_keys
 my @keys=autoargs_keys($args);
