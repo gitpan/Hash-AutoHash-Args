@@ -1,31 +1,27 @@
 #!perl
 use strict;
+use File::Basename;
+use File::Spec;
+use Module::Build;
 use Test::More;
+use Test::Pod;
+use Test::Pod::Content;
 
-SKIP: {
-  # Ensure a recent version of Test::Pod
-  my $min_tp = 1.22;
-  eval "use Test::Pod $min_tp";
-  skip "POD test: Test::Pod $min_tp required",1 if $@;
-  my @pod_files=all_pod_files();
-  map {pod_file_ok($_)} @pod_files;
-}
+my $builder=Module::Build->current;
+my $module_name=$builder->module_name;
+my $module_pm=File::Spec->catdir('blib',$builder->dist_version_from);
+pod_file_ok($module_pm,"$module_name POD okay");
+my $correct_version=$builder->dist_version;
+$correct_version=~s/_.*//;	# strip development sub-version number
+pod_section_like($module_pm,'VERSION',qr/Version $correct_version$/,
+		 "version number in $module_name POD");
 
-SKIP: {
-  # Ensure a version of Test::Pod::Content
-  eval "use Test::Pod::Content";
-  skip 'version number in POD: Test::Pod::Content required',1 if $@;
-  use Module::Build;
-  my $builder=Module::Build->current;
-  my $module_pm=File::Spec->catdir('blib',$builder->dist_version_from);
-  my $correct_version=$builder->dist_version;
-  $correct_version=~s/_.*//;	# strip development sub-version number
-  pod_section_like($module_pm,'VERSION',qr/Version $correct_version$/,'version number in POD');
-  # also do it for V0
-  use File::Basename;
-  my($name,$path)=fileparse($module_pm,qw(.pm));
-  $module_pm=File::Spec->catfile($path,$name,'V0.pm');
-  pod_section_like($module_pm,'VERSION',qr/Version $correct_version$/,'version number in V0 POD');
-}
+# do it for V0 also
+my($name,$path)=fileparse($module_pm,qw(.pm));
+$module_name.='::V0';
+$module_pm=File::Spec->catfile($path,$name,'V0.pm');
+pod_file_ok($module_pm,"$module_name POD okay");
+pod_section_like($module_pm,'VERSION',qr/Version $correct_version$/,
+		 "version number in $module_name POD");
 
 done_testing();

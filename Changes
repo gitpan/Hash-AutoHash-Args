@@ -1,5 +1,10 @@
 Revision history for Hash-AutoHash-Args
 
+1.18_01	2013-09-29
+	No functional changes
+	Updated depdendencies
+        Fixed boilerplate & pod tests
+
 1.17	2013-12-25
 	Fixed a test I missed last time that was failing because of hash key  
 	randomization introduced in 5.16

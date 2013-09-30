@@ -1,5 +1,5 @@
 package Hash::AutoHash::Args;
-our $VERSION='1.17';
+our $VERSION='1.18_01';
 $VERSION=eval $VERSION;		# I think this is the accepted idiom..
 
 #################################################################################
@@ -182,7 +182,7 @@ Hash::AutoHash::Args - Object-oriented processing of keyword-based argument list
 
 =head1 VERSION
 
-Version 1.17
+Version 1.18
 
 =head1 SYNOPSIS
 
