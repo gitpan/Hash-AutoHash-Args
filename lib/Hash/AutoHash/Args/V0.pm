@@ -16,7 +16,7 @@ use strict;
 use Carp;
 use Hash::AutoHash;
 use base qw(Hash::AutoHash::Args);
-our $VERSION='1.18_01';
+our $VERSION='1.18';
 
 our @NORMAL_EXPORT_OK=@Hash::AutoHash::Args::EXPORT_OK;
 my $helper_class=__PACKAGE__.'::helper';

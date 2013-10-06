@@ -1,6 +1,6 @@
 Revision history for Hash-AutoHash-Args
 
-1.18_01	2013-09-29
+1.18	2013-10-05
 	No functional changes
 	Updated depdendencies
         Fixed boilerplate & pod tests

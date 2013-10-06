@@ -20,7 +20,7 @@
             "Exporter" : "5.68",
             "File::Basename" : "2.82",
             "File::Spec" : "3.4",
-            "Hash::AutoHash" : "1.16",
+            "Hash::AutoHash" : "1.17",
             "List::MoreUtils" : "0.33",
             "Module::Build" : "0.4007",
             "Test::Deep" : "0.11",
@@ -39,7 +39,7 @@
             "Carp" : "1.2",
             "Cwd" : "3.4",
             "Exporter" : "5.68",
-            "Hash::AutoHash" : "1.16",
+            "Hash::AutoHash" : "1.17",
             "List::MoreUtils" : "0.33",
             "List::Util" : "1.32",
             "Tie::Hash" : "1.04",
@@ -51,11 +51,11 @@
    "provides" : {
       "Hash::AutoHash::Args" : {
          "file" : "lib/Hash/AutoHash/Args.pm",
-         "version" : "1.18_01"
+         "version" : "1.18"
       },
       "Hash::AutoHash::Args::V0" : {
          "file" : "lib/Hash/AutoHash/Args/V0.pm",
-         "version" : "1.18_01"
+         "version" : "1.18"
       },
       "Hash::AutoHash::Args::V0::helper" : {
          "file" : "lib/Hash/AutoHash/Args/V0.pm",
@@ -70,11 +70,11 @@
          "version" : 0
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "license" : [
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "1.18_01"
+   "version" : "1.18"
 }

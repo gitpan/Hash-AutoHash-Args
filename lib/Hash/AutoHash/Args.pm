@@ -1,5 +1,5 @@
 package Hash::AutoHash::Args;
-our $VERSION='1.18_01';
+our $VERSION='1.18';
 $VERSION=eval $VERSION;		# I think this is the accepted idiom..
 
 #################################################################################
